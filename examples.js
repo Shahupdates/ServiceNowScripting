@@ -96,4 +96,26 @@ gs.getUser().getLocation();
 gs.getUser().getManagerID();
 gs.getUser().getCompanyID();
 
+Most of the preceding code is fairly self-explanatory, but the ID functions will return the sys_id of the record in the same way as the user sys_id.
+
+The user's details can be useful for sending notifications and setting up the approvals and condition scripts based on locations or companies.
+Whilst we are on user data, it is often important to find out which roles a user has to decide what they should have access to. Glidesystem allows us to see whether a user has certain roles in the script
+if (gs.hasRole('admin')) {
+	//run code for administrators only
+}
+
+The hasRole method is especially useful when using scripts to allow or restrict data to a user.
+It can also be used to hide or show UI actions that would require an elevated privilege to use.
+
+GlideSystem is also good for letting the user know what has happened during a script through an output message for the user.
+gs.addInfoMessage('Record saves successfully.');
+gs.addErrorMessage('Error in script.');
+
+
+gs.log('logging message');
+
+If many logs are being created, it can be helpful to give your log a unique source so you can more easily search for only logs from your particular source. Lets have a look at what this looks like
+gs.log('Logging Message', 'My script log');
+
+This message will then appear in the system log with a source of My Script Log. 
 
